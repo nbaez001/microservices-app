@@ -4,7 +4,7 @@ server:
     include-message: always
 spring:
   application:
-    name: api-car
+    name: api-bike
   datasource:
     url: jdbc:h2:mem:invoiceDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     driverClassName: org.h2.Driver
