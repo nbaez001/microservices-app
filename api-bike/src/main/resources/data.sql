@@ -1,0 +1,1 @@
+INSERT INTO bike (brand,model,user_id) VALUES ('HONDA','XR190L',1);

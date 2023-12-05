@@ -1,0 +1,1 @@
+INSERT INTO car (brand,model,user_id) VALUES ('TOYOTA','RAV4',1);
