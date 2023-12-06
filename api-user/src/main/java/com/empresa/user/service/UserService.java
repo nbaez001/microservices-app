@@ -1,5 +1,7 @@
 package com.empresa.user.service;
 
+import com.empresa.user.clients.BikeFeignClient;
+import com.empresa.user.clients.CarFeignClient;
 import com.empresa.user.entity.User;
 import com.empresa.user.model.Bike;
 import com.empresa.user.model.Car;
@@ -8,7 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 @Service
 public class UserService {
@@ -17,6 +22,12 @@ public class UserService {
     UserRepository userRepository;
     @Autowired
     RestTemplate restTemplate;
+
+    @Autowired
+    CarFeignClient carFeignClient;
+
+    @Autowired
+    BikeFeignClient bikeFeignClient;
 
     public List<User> getAll() {
         return userRepository.findAll();
@@ -38,5 +49,38 @@ public class UserService {
     public List<Bike> getBikes(Long id) {
         List<Bike> bikes = restTemplate.getForObject("http://localhost:8003/bike/byuser/" + id, List.class);
         return bikes;
+    }
+
+    public Car saveCar(Long userId, Car car) {
+        car.setUserId(userId);
+        return carFeignClient.save(car);
+    }
+
+    public Bike saveBike(Long userId, Bike bike) {
+        bike.setUserId(userId);
+        return bikeFeignClient.save(bike);
+    }
+
+    public Map<String, Object> getUserAndVehicles(Long userId){
+        Map<String, Object> result = new HashMap<>();
+        User user = userRepository.findById(userId).orElse(null);
+        if(user == null){
+            result.put("Mensaje", "no existe usuario");
+            return result;
+        }
+        result.put("User",user);
+
+        List<Car> cars = carFeignClient.getCarsByUserId(userId);
+        if(cars.isEmpty())
+            result.put("Cars","Ese user no tiene coches");
+        else
+            result.put("Cars",cars);
+
+        List<Bike> bikes = bikeFeignClient.getBikesByUserId(userId);
+        if(bikes.isEmpty())
+            result.put("Bikes","Ese user no tiene motos");
+        else
+            result.put("Bikes",bikes);
+        return result;
     }
 }
