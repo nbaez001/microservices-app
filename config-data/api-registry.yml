@@ -1,0 +1,12 @@
+server:
+  port: 8761
+  error:
+    include-message: always
+spring:
+  application:
+    name: api-registry
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+  
