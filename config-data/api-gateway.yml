@@ -15,7 +15,7 @@ spring:
     name: api-gateway
   cloud:
     gateway:
-      discovery:
+      discover:
         locator:
           enabled: true
       routes:
