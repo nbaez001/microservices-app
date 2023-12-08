@@ -1,0 +1,33 @@
+server:
+  port: 8080
+  error:
+    include-message: always
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: api-user-id
+          uri: lb://api-user
+          predicates:
+            - Path=/user/**
+        - id: api-car-id
+          uri: lb://api-car
+          predicates:
+            - Path=/car/**
+        - id: api-bike-id
+          uri: lb://api-bike
+          predicates:
+            - Path=/bike/**
