@@ -15,19 +15,19 @@ spring:
     name: api-gateway
   cloud:
     gateway:
-      discover:
+      discovery:
         locator:
           enabled: true
       routes:
-        - id: api-user-id
+        - id: api-user
           uri: lb://api-user
           predicates:
             - Path=/user/**
-        - id: api-car-id
+        - id: api-car
           uri: lb://api-car
           predicates:
             - Path=/car/**
-        - id: api-bike-id
+        - id: api-bike
           uri: lb://api-bike
           predicates:
             - Path=/bike/**
