@@ -18,16 +18,18 @@ spring:
       discovery:
         locator:
           enabled: true
-      routes:
-        - id: api-user
-          uri: lb://api-user
-          predicates:
-            - Path=/user/**
-        - id: api-car
-          uri: lb://api-car
-          predicates:
-            - Path=/car/**
-        - id: api-bike
-          uri: lb://api-bike
-          predicates:
-            - Path=/bike/**
+          lower-case-service-id: true
+      mvc:
+        routes:
+          - id: api-user
+            uri: lb://api-user
+            predicates:
+              - Path=/user/**
+          - id: api-car
+            uri: lb://api-car
+            predicates:
+              - Path=/car/**
+          - id: api-bike
+            uri: lb://api-bike
+            predicates:
+              - Path=/bike/**
