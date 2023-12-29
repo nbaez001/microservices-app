@@ -29,6 +29,11 @@ spring:
       platform: h2
       schema-locations: classpath:schema.sql
       data-locations: classpath:data.sql
+  zipkin:
+    base-url: http://localhost:9411/ 
+  sleuth:
+    sampler:
+      probability: 1.0
 eureka:
   client:
     fetch-registry: true
@@ -70,7 +75,3 @@ resilience4j.circuitbreaker:
             failureRateThreshold: 50
             eventConsumerBufferSize: 10
             record-failure-predicate: io.github.robwin.exception.RecordFailurePredicate
-management:
-  tracing:
-    sampling:
-      probability: 1.0
