@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          default-label: master
+          default-label: 07-GATEWAY
           uri: https://github.com/nbaez001/microservices-app
           search-paths: config-data
   application:

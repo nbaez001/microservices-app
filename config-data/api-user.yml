@@ -45,8 +45,8 @@ resilience4j.circuitbreaker:
             slidingWindowSize: 10
             permittedNumberOfCallsInHalfOpenState: 3
             slidingWindowType: TIME_BASED
-            minimumNumberOfCalls: 20
-            waitDurationInOpenState: 50s
+            minimumNumberOfCalls: 4
+            waitDurationInOpenState: 5s
             failureRateThreshold: 50
             eventConsumerBufferSize: 10
             record-failure-predicate: io.github.robwin.exception.RecordFailurePredicate
@@ -55,8 +55,8 @@ resilience4j.circuitbreaker:
             slidingWindowSize: 10
             permittedNumberOfCallsInHalfOpenState: 3
             slidingWindowType: TIME_BASED
-            minimumNumberOfCalls: 20
-            waitDurationInOpenState: 50s
+            minimumNumberOfCalls: 4
+            waitDurationInOpenState: 5s
             failureRateThreshold: 50
             eventConsumerBufferSize: 10
             record-failure-predicate: io.github.robwin.exception.RecordFailurePredicate
@@ -65,8 +65,8 @@ resilience4j.circuitbreaker:
             slidingWindowSize: 10
             permittedNumberOfCallsInHalfOpenState: 3
             slidingWindowType: TIME_BASED
-            minimumNumberOfCalls: 20
-            waitDurationInOpenState: 50s
+            minimumNumberOfCalls: 5
+            waitDurationInOpenState: 5s
             failureRateThreshold: 50
             eventConsumerBufferSize: 10
             record-failure-predicate: io.github.robwin.exception.RecordFailurePredicate
