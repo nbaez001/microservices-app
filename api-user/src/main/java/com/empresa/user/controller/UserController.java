@@ -46,7 +46,7 @@ public class UserController {
         return ResponseEntity.ok().body(userNew);
     }
 
-    @CircuitBreaker(name = "carscb", fallbackMethod = "fallbackGetCars")
+    @CircuitBreaker(name = "carsCB", fallbackMethod = "fallbackGetCars")
     @GetMapping(value = "/cars/{userId}")
     public ResponseEntity<List<Car>> getCars(@PathVariable("userId") Long userId) {
         User user = userService.getUserById(userId);
@@ -58,7 +58,7 @@ public class UserController {
         }
     }
 
-    @CircuitBreaker(name = "carscb", fallbackMethod = "fallbackSaveCar")
+    @CircuitBreaker(name = "carsCB", fallbackMethod = "fallbackSaveCar")
     @PostMapping(value = "/savecar/{userId}")
     public ResponseEntity<Car> saveCar(@PathVariable("userId") Long userId, @RequestBody Car car) {
         if (userService.getUserById(userId) == null)
@@ -67,7 +67,7 @@ public class UserController {
         return ResponseEntity.ok().body(carNew);
     }
 
-    @CircuitBreaker(name = "bikescb", fallbackMethod = "fallbackGetBikes")
+    @CircuitBreaker(name = "bikesCB", fallbackMethod = "fallbackGetBikes")
     @GetMapping(value = "/bikes/{userId}")
     public ResponseEntity<List<Bike>> getBikes(@PathVariable("userId") Long userId) {
         User user = userService.getUserById(userId);
@@ -79,7 +79,7 @@ public class UserController {
         }
     }
 
-    @CircuitBreaker(name = "bikescb", fallbackMethod = "fallbackSaveBike")
+    @CircuitBreaker(name = "bikesCB", fallbackMethod = "fallbackSaveBike")
     @PostMapping(value = "/savebike/{userId}")
     public ResponseEntity<Bike> saveBike(@PathVariable("userId") Long userId, @RequestBody Bike bike) {
         if (userService.getUserById(userId) == null)
@@ -88,7 +88,7 @@ public class UserController {
         return ResponseEntity.ok().body(bikeNew);
     }
 
-    @CircuitBreaker(name = "allcb", fallbackMethod = "fallbackGetAll")
+    @CircuitBreaker(name = "allCB", fallbackMethod = "fallbackGetAll")
     @GetMapping(value = "/getAll/{userId}")
     public ResponseEntity<Map<String, Object>> getAllVehicles(@PathVariable("userId") Long userId) {
         Map<String, Object> map = userService.getUserAndVehicles(userId);

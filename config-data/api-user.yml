@@ -40,7 +40,7 @@ eureka:
 
 resilience4j.circuitbreaker:
     instances:
-        carscb:
+        carsCB:
             registerHealthIndicator: true
             slidingWindowSize: 10
             permittedNumberOfCallsInHalfOpenState: 3
@@ -50,7 +50,7 @@ resilience4j.circuitbreaker:
             failureRateThreshold: 50
             eventConsumerBufferSize: 10
             record-failure-predicate: io.github.robwin.exception.RecordFailurePredicate
-        bikescb:
+        bikesCB:
             registerHealthIndicator: true
             slidingWindowSize: 10
             permittedNumberOfCallsInHalfOpenState: 3
@@ -60,7 +60,7 @@ resilience4j.circuitbreaker:
             failureRateThreshold: 50
             eventConsumerBufferSize: 10
             record-failure-predicate: io.github.robwin.exception.RecordFailurePredicate
-        allcb:
+        allCB:
             registerHealthIndicator: true
             slidingWindowSize: 10
             permittedNumberOfCallsInHalfOpenState: 3
